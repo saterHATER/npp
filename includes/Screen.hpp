@@ -3,7 +3,7 @@
 #include "Window.hpp"
 #include <vector>
 
-namespace Ncurses {
+namespace npp {
   class Screen {
     public:
       void refresh();

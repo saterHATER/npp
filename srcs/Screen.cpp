@@ -1,5 +1,5 @@
 #include "Screen.hpp"
 
-void Ncurses::Screen::refresh(void) {
+void npp::Screen::refresh(void) {
   ::refresh();
 }
