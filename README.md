@@ -9,7 +9,7 @@ as possible.
 Right now I am doing this project to learn cpp. So please, correct me
 if I do things wrong.
 
-I have not written a documentation yet, sorry about that. You can still
+I have not written any documentation yet, sorry about that. You can still
 check out the `tests/` folder if you want some examples.
 
 Have fun ! :D
