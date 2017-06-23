@@ -6,7 +6,7 @@ namespace npp {
   initFunction initFunctions[] = {
     {BUFFERING, setBuffering, false},
     {KEYPAD, setKeypad, false},
-    {NOCURSOR, setCursor, true}
+    {NOCURSOR, setCursor, false}
   };
 }
 

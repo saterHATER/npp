@@ -23,7 +23,7 @@ void npp::Window::refresh(void) const {
 }
 
 int npp::Window::getchar(void) const {
-  int c = getch();
+  int c = wgetch(window);
   return c;
 }
 

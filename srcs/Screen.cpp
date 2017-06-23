@@ -8,7 +8,7 @@ npp::Screen::Screen(unsigned int flags) {
   if (initscr() == nullptr)
     throw std::runtime_error("The screen could not be initialized.");
 
-  for (int i = 0; i < 4; ++i) {
+  for (int i = 0; i < 3; ++i) {
     if (initFunctions[i].flag & flags)
       initFunctions[i].f(initFunctions[i].defaultValue);
     else
