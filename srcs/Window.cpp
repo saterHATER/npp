@@ -10,6 +10,10 @@ npp::Window::Window(const int h, const int w,
     throw std::runtime_error("The window could not be created.");
 }
 
+npp::Window::~Window() {
+  delwin(window);
+}
+
 void npp::Window::box(const chtype v, const chtype h) const {
   ::box(window, v, h);
 }
@@ -28,4 +32,8 @@ void npp::Window::write(const std::string str, ...) const {
   va_start(args, str);
   vw_printw(window, str.c_str(), args);
   va_end(args);
+}
+
+WINDOW *npp::Window::c_ptr() const {
+  return window;
 }

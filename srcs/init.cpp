@@ -25,22 +25,3 @@ int npp::setBuffering(bool state) {
     cbreak();
   return state;
 }
-
-int npp::init(unsigned int flags) {
-  if (initscr() == nullptr)
-    return FAILURE;
-
-  if (flags == NONE)
-    return SUCCESS;
-
-  constexpr int nb_flags = sizeof(initFunctions) /
-    sizeof(initFunction);
-  for (int i = 0; i < nb_flags; ++i) {
-    if (initFunctions[i].flag & flags)
-      initFunctions[i].f(initFunctions[i].defaultValue);
-    else
-      initFunctions[i].f(!initFunctions[i].defaultValue);
-  }
-
-  return SUCCESS;
-}

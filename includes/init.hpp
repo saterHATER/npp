@@ -14,7 +14,6 @@ namespace npp {
     bool defaultValue;
   } initFunction;
 
-  int init(unsigned int flags);
   int setBuffering(bool active);
   int setKeypad(bool active);
   int setCursor(bool active);

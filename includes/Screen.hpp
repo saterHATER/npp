@@ -3,6 +3,8 @@
 namespace npp {
   class Screen {
     public:
-      void refresh();
+      Screen(unsigned int flags);
+      ~Screen();
+      void refresh(void) const;
   };
 }
