@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 namespace npp {
   typedef enum {
     NONE = 0,
@@ -10,7 +12,7 @@ namespace npp {
 
   typedef struct {
     initFlags flag;
-    int (*f)(bool);
+    std::function<int(bool)> f;
     bool defaultValue;
   } initFunction;
 
@@ -18,5 +20,5 @@ namespace npp {
   int setKeypad(bool active);
   int setCursor(bool active);
 
-  extern initFunction initFunctions[];
+  extern std::vector<initFunction> initFunctions;
 };

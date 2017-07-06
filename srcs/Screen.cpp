@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <vector>
 #include "Screen.hpp"
 #include "init.hpp"
 #include "status.hpp"
@@ -8,7 +9,7 @@ npp::Screen::Screen(unsigned int flags) {
   if (initscr() == nullptr)
     throw std::runtime_error("The screen could not be initialized.");
 
-  for (int i = 0; i < 3; ++i) {
+  for (unsigned int i = 0; i < npp::initFunctions.size(); ++i) {
     if (initFunctions[i].flag & flags)
       initFunctions[i].f(initFunctions[i].defaultValue);
     else

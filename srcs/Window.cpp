@@ -5,35 +5,40 @@
 
 npp::Window::Window(const int h, const int w,
     const int y, const int x) {
-  window = newwin(h, w, y, x);
-  if (window == nullptr)
-    throw std::runtime_error("The window could not be created.");
+  _container = newwin(h, w, y, x);
+  _window = newwin(h - 2, w - 2, y + 1, x + 1);
+  if (_window == nullptr || _container == nullptr)
+    throw std::runtime_error("The _window could not be created.");
 }
 
 npp::Window::~Window() {
-  delwin(window);
+  delwin(_window);
+  delwin(_container);
 }
 
 void npp::Window::box(const chtype v, const chtype h) const {
-  ::box(window, v, h);
+  ::box(_container, v, h);
+  wrefresh(_container);
 }
 
 void npp::Window::refresh(void) const {
-  wrefresh(window);
+  wrefresh(_window);
 }
 
 int npp::Window::getchar(void) const {
-  int c = wgetch(window);
+  const int c = wgetch(_window);
   return c;
 }
 
-void npp::Window::write(const std::string str, ...) const {
+void npp::Window::write(const int y, const int x,
+    const std::string str, ...) const {
+  wmove(_window, y, x);
   va_list args;
   va_start(args, str);
-  vw_printw(window, str.c_str(), args);
+  vw_printw(_window, str.c_str(), args);
   va_end(args);
 }
 
 WINDOW *npp::Window::c_ptr() const {
-  return window;
+  return _window;
 }
