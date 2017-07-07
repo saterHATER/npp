@@ -25,18 +25,32 @@ void npp::Window::refresh(void) const {
   wrefresh(_window);
 }
 
+// Named getchar to avoid conflicts with getch
 int npp::Window::getchar(void) const {
-  const int c = wgetch(_window);
-  return c;
+  return wgetch(_window);
 }
 
-void npp::Window::write(const int y, const int x,
+void npp::Window::mvprintw(const int y, const int x,
     const std::string str, ...) const {
   wmove(_window, y, x);
   va_list args;
   va_start(args, str);
   vw_printw(_window, str.c_str(), args);
   va_end(args);
+}
+
+int npp::Window::scrollok(bool state) const {
+  return ::scrollok(_window, state);
+}
+
+int npp::Window::wscrl(const int n) const {
+  return ::wscrl(_window, n);
+}
+
+// Named wscroll to avoid conflicts with the
+// scroll Ncurses macro
+int npp::Window::wscroll(void) const {
+  return ::scroll(_window);
 }
 
 WINDOW *npp::Window::c_ptr() const {

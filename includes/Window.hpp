@@ -13,7 +13,13 @@ namespace npp {
       void box(const chtype v, const chtype h) const;
       void refresh(void) const;
       int getchar(void) const;
-      void write(const int y, const int x, const std::string str, ...) const;
+      void mvprintw(const int y, const int x,
+          const std::string str, ...) const;
+
+    public:
+      int scrollok(bool) const;
+      int wscrl(const int n) const;
+      int wscroll(void) const;
 
     public:
       WINDOW *c_ptr() const;
